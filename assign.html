@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           .Container{
+      margin:0px auto;
+      width:800px;
+      text-align:center;
+    }
+    .Dat{
+        text-align: left;
+    }
+    #displayDate{
+        margin-right:400px ; 
+    }
+    #myTable,#myTable1{
+      width:800px;
+      border: 1px solid #aaa;
+    }
+    </style>
+</head>
+<body>
+    <div class="Container">
+       
+            <h1>Bangalore Railway Station</h1>
+        <h2>Arrival Table</h2>
+        <div class="Dat">
+        <h4>Todays Date is: <span id="displayDate"></span>Current time is: <span id="displayTime"></span></h4>  
+        </div>
+    <table id="myTable">
+        <thead>
+      <tr >
+        <th >Tain Number</th>
+        <th >Train Name</th>
+        <th >Platform Number</th>
+        <th >Expected time of Arrival</th>
+      </tr>
+      </thead>
+        <tbody >
+            <tr> 
+              <td>48663</td>
+              <td>KSR Bengaluru Mail</td>
+              <td>2</td>
+              <td>11:00</td>
+            </tr>
+            <tr> 
+              <td>75434</td>
+              <td>Kacheguda-Mysuru Express</td>
+              <td>4</td>
+              <td>11:02</td>
+            </tr>
+            <tr> 
+              <td>28969</td>
+              <td>Rajdhani Express</td>
+              <td>1</td>
+              <td>11:04</td>
+            </tr>
+            <tr> 
+              <td>48745</td>
+              <td>Bangalore Miraj</td>
+              <td>3</td>
+              <td>11:06</td>
+            </tr>
+            <tr> 
+              <td>86643</td>
+              <td>Rani Chennamma Express</td>
+              <td>3</td>
+              <td>11:08</td>
+            </tr>
+            </tbody>
+    </table>
+    <h2>Departure Table</h2>
+<table id="myTable1">
+    <thead>
+  <tr >
+    <th >Tain Number</th>
+    <th >Train Name</th>
+    <th >Platform Number</th>
+    <th >Time of Departure</th>
+  </tr>
+  </thead>
+    <tbody >
+        <tr> 
+          <td>48663</td>
+          <td>KSR Bengaluru Mail</td>
+          <td>2</td>
+          <td>11:03</td>
+        </tr>
+        <tr> 
+          <td>75434</td>
+          <td>Kacheguda-Mysuru Express</td>
+          <td>4</td>
+          <td>11:05</td>
+        </tr>
+        <tr> 
+          <td>28969</td>
+          <td>Rajdhani Express</td>
+          <td>1</td>
+          <td>11:07</td>
+        </tr>
+        <tr> 
+          <td>48745</td>
+          <td>Bangalore Miraj</td>
+          <td>3</td>
+          <td>11:09</td>
+        </tr>
+        <tr> 
+          <td>86643</td>
+          <td>Rani Chennamma Express</td>
+          <td>3</td>
+          <td>11:11</td>
+        </tr>
+        </tbody>
+</table>
+  </div>        
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+
+
+    var today = new Date();
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    // var time = today.getHours() + ":" + today.getMinutes();
+    var time = today.toLocaleTimeString("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+});
+    document.getElementById("displayDate").innerHTML = date;
+    document.getElementById("displayTime").innerHTML = time;
+}
+
+    var a = setTimeout(fun1); 
+
+    function fun1() {
+        var textScroller = document.getElementById('myTable');
+        var stu = [{
+                    "Tainnumb": "58758",
+                    "Trainname": "Karnataka Express",
+                    "Platformnumb": "1",
+                    "Arrivaltime":"11:10"
+                },
+                {
+                    "Tainnumb": "15658",
+                    "Trainname": "Lal Bagh Express",  
+                    "Platformnumb": "2",
+                    "Arrivaltime":"11:12"
+                },
+                { 
+                    "Tainnumb": "14856",
+                    "Trainname": "Brindavan Express",
+                    "Platformnumb": "4",
+                    "Arrivaltime":"11:14"
+                },
+                {
+                    "Tainnumb": "98146",
+                    "Trainname": "Tippu Express",
+                    "Platformnumb": "3",
+                    "Arrivaltime":"11:16"
+                },
+                {
+                    "Tainnumb": "90801",
+                    "Trainname": "Humsafar Express",
+                    "Platformnumb": "1",
+                    "Arrivaltime":"11:18"
+                }
+            ]
+          var c=0;
+
+          var interval = setInterval(function() { 
+                          textScroller.innerHTML += "<tr><td>"  + stu[c].Tainnumb + "</td><td>" + stu[c].Trainname +  "</td><td>" + stu[c].Platformnumb +  "</td><td>" + stu[c].Arrivaltime + "</td></tr>";
+                          c++; 
+                          document.getElementById("myTable").deleteRow(1); 
+                          if(c >= stu.length) clearInterval(interval);
+                   }, 120000);
+                  };
+                  var b = setTimeout(fun2); 
+
+function fun2() {
+    var textScroller = document.getElementById('myTable1');
+    var stu = [{
+                "Tainnumb": "58758",
+                "Trainname": "Karnataka Express",
+                "Platformnumb": "1",
+                "Departuretime":"11:13"
+            },
+            {
+                "Tainnumb": "15658",
+                "Trainname": "Lal Bagh Express",  
+                "Platformnumb": "2",
+                "Departuretime":"11:15"
+            },
+            { 
+                "Tainnumb": "14856",
+                "Trainname": "Brindavan Express",
+                "Platformnumb": "4",
+                "Departuretime":"11:17"
+            },
+            {
+                "Tainnumb": "98146",
+                "Trainname": "Tippu Express",
+                "Platformnumb": "3",
+                "Departuretime":"11:19"
+            },
+            {
+                "Tainnumb": "90801",
+                "Trainname": "Humsafar Express",
+                "Platformnumb": "1",
+                "Departuretime":"11:21"
+            }
+        ]
+      var c=0;
+
+      var interval = setInterval(function() { 
+                      textScroller.innerHTML += "<tr><td>"  + stu[c].Tainnumb + "</td><td>" + stu[c].Trainname +  "</td><td>" + stu[c].Platformnumb +  "</td><td>" + stu[c].Departuretime + "</td></tr>";
+                      c++; 
+                      document.getElementById("myTable1").deleteRow(1); 
+                      if(c >= stu.length) clearInterval(interval);
+               }, 180000);
+              };
+    </script>
+</html>
